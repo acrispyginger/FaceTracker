@@ -1,4 +1,3 @@
-
 import cv2
 import time
 
@@ -42,8 +41,13 @@ while True:
     #Lastly consider adding a minimum scale because then it wont scale down any smaller than it needs to and this might make it faster
     face = Cascade.detectMultiScale(GrayScaleFrame, scaleFactor=1.1, minNeighbors=5)
 
+    #We are using x and y for a corner point and w means width so distance from one side to another and h which is hight from top line to bottom. 
+    #We can do two points but when you think about it when you put the first point all you have to do is get the distance to the next point by getting
+    #the width and the height of the face.
+    #
+    #the three numbers in the parentheses are the RGB colors and the last number is the box thicccness
     for (x, y, w, h) in face:
-     cv2.rectangle(GrayScaleFrame, (x, y), (x+w, y+h), (255, 0, 0), 2)
+     cv2.rectangle(GrayScaleFrame, (x, y), (x+w, y+h), (255, 255, 0), 3)
 
     #Shows the frame and the name of the window is in the quote marks
     cv2.imshow('Big ol Turd', GrayScaleFrame)
